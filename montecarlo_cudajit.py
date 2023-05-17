@@ -30,8 +30,6 @@ rng_states = create_xoroshiro128p_states(threads_per_block * blocks, seed=1)
 out = np.zeros(threads_per_block * blocks, dtype=np.float32)
 
 
-print("power, res, error_rate, time")
-
 for power in range(10):
     iterations = -(-(10**power) // (threads_per_block * blocks))
 
@@ -44,5 +42,8 @@ for power in range(10):
     res = out.mean()
 
     error_rate = abs(res - pi) / pi
+
+    if power == 0:
+        print("power, res, error_rate, time")
 
     print(power, ", ", res, ", ", error_rate, ", ", runTime)
