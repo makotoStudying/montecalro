@@ -30,7 +30,7 @@ rng_states = create_xoroshiro128p_states(threads_per_block * blocks, seed=1)
 out = np.zeros(threads_per_block * blocks, dtype=np.float32)
 
 
-for power in range(15):
+for power in range(12):
     iterations = -(-(10**power) // (threads_per_block * blocks))
 
     start = time.perf_counter()
